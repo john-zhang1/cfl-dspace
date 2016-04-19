@@ -15,6 +15,8 @@
 
  <form-map>
    <name-map collection-handle="default" form-name="traditional" />
+   <name-map collection-handle="123456789/1" form-name="chineseresearch" />
+   <name-map collection-handle="123456789/2" form-name="chineseteaching" />
  </form-map>
 
 
@@ -202,6 +204,332 @@ it, please enter the types and the actual numbers or codes.</hint>
      </page>
    </form>
 
+   <!-- chinese research -->
+   <form name="chineseresearch">
+      <page number="1">
+        <field>
+           <dc-schema>dc</dc-schema>
+           <dc-element>title</dc-element>
+           <dc-qualifier></dc-qualifier>
+           <repeatable>false</repeatable>
+           <label>Title</label>
+           <input-type>onebox</input-type>
+           <hint>Enter the main title of the item.</hint>
+           <required>You must enter a main title for this item.</required>
+       </field>
+
+       <field>
+           <dc-schema>dc</dc-schema>
+           <dc-element>date</dc-element>
+           <dc-qualifier>issued</dc-qualifier>
+           <repeatable>false</repeatable>
+           <label>Date of Publication</label>
+           <input-type>date</input-type>
+           <hint>You can leave out the day and/or month if they aren't applicable.</hint>
+           <required>You must enter at least the year.</required>
+       </field>
+
+       <field>
+           <dc-schema>dc</dc-schema>
+           <dc-element>contributor</dc-element>
+           <dc-qualifier>author</dc-qualifier>
+           <repeatable>true</repeatable>
+           <label>Author</label>
+           <input-type>name</input-type>
+           <hint>Enter the author(s) of this work. Do not include degrees as part of the name.</hint>
+           <required>You must enter a creator</required>
+       </field>
+
+       <field>
+           <dc-schema>ou</dc-schema>
+           <dc-element>group</dc-element>
+           <dc-qualifier></dc-qualifier>
+           <repeatable>false</repeatable>
+           <label>College/Organization/Institute</label>
+           <input-type value-pairs-name="ou_group">dropdown</input-type>
+           <hint></hint>
+           <required></required>
+       </field>
+
+       <field>
+           <dc-schema>dc</dc-schema>
+           <dc-element>type</dc-element>
+           <dc-qualifier></dc-qualifier>
+           <repeatable>true</repeatable>
+           <label>Type</label>
+           <input-type value-pairs-name="common_types">dropdown</input-type>
+           <hint>Select the type(s) of content of the item. To select more than one value in the list, you may have to hold down the "CTRL" or "Shift" key.</hint>
+           <required></required>
+       </field>
+
+       <field>
+           <dc-schema>dc</dc-schema>
+           <dc-element>description</dc-element>
+           <dc-qualifier>peerreview</dc-qualifier>
+           <repeatable>false</repeatable>
+           <label>Peer Reviewed</label>
+           <input-type value-pairs-name="peerreview_check">list</input-type>
+           <hint>Was this work peer reviewed? </hint>
+           <required></required>
+       </field>
+
+       <field>
+           <dc-schema>dc</dc-schema>
+           <dc-element>description</dc-element>
+           <dc-qualifier>peerreviewnotes</dc-qualifier>
+           <repeatable>false</repeatable>
+           <label>Peer Review Notes</label>
+           <input-type>textarea</input-type>
+           <hint>Enter a brief description of the nature of peer review for this work.</hint>
+           <required></required>
+       </field>
+
+       <field>
+           <dc-schema>dc</dc-schema>
+           <dc-element>identifier</dc-element>
+           <dc-qualifier>doi</dc-qualifier>
+           <repeatable>true</repeatable>
+           <label>DOI</label>
+           <input-type>onebox</input-type>
+           <hint>DOI</hint>
+           <required></required>
+       </field>
+
+       <field>
+           <dc-schema>dc</dc-schema>
+           <dc-element>identifier</dc-element>
+           <dc-qualifier>citation</dc-qualifier>
+           <repeatable>false</repeatable>
+           <label>Citation</label>
+           <input-type>onebox</input-type>
+           <hint>Enter the standard citation for this item.</hint>
+           <required></required>
+       </field>
+
+       <field>
+           <dc-schema>dc</dc-schema>
+           <dc-element>relation</dc-element>
+           <dc-qualifier>ispartofseries</dc-qualifier>
+           <repeatable>true</repeatable>
+           <label>Series/Report No.</label>
+           <input-type>series</input-type>
+           <hint>Enter the series and number assigned to this item by your community.</hint>
+           <required></required>
+       </field>
+
+       <field>
+           <dc-schema>dc</dc-schema>
+           <dc-element>subject</dc-element>
+           <dc-qualifier></dc-qualifier>
+           <!-- An input-type of twobox MUST be marked as repeatable -->
+           <repeatable>true</repeatable>
+           <label>Subject Category</label>
+           <input-type>onebox</input-type>
+           <hint>Enter subjects. </hint>
+           <required></required>
+           <vocabulary closed="false">subjects</vocabulary>
+       </field>
+
+       <field>
+          <dc-schema>dc</dc-schema>
+          <dc-element>description</dc-element>
+          <dc-qualifier>abstract</dc-qualifier>
+          <repeatable>false</repeatable>
+          <label>Abstract</label>
+          <input-type>textarea</input-type>
+          <hint>Enter the abstract of the item. </hint>
+          <required></required>
+       </field>
+
+       <field>
+          <dc-schema>dc</dc-schema>
+          <dc-element>description</dc-element>
+          <dc-qualifier>sponsorship</dc-qualifier>
+          <repeatable>false</repeatable>
+          <label>Sponsor Notes</label>
+          <input-type>textarea</input-type>
+          <hint> Enter the names of any sponsors and/or funding codes in the box. </hint>
+          <required></required>
+       </field>
+
+       <field>
+          <dc-schema>dc</dc-schema>
+          <dc-element>description</dc-element>
+          <dc-qualifier></dc-qualifier>
+          <repeatable>false</repeatable>
+          <label>Description</label>
+          <input-type>textarea</input-type>
+          <hint> Record any additional notes pertaining to the resource. </hint>
+          <required></required>
+       </field>
+
+       <field>
+          <dc-schema>dc</dc-schema>
+          <dc-element>language</dc-element>
+          <dc-qualifier></dc-qualifier>
+          <repeatable>false</repeatable>
+          <label>Primary Language</label>
+          <input-type value-pairs-name="common_iso_languages">dropdown</input-type>
+          <hint>Select the language of the main content of the item.  If the language does not appear in the list below, please select 'Other'.</hint>
+          <required></required>
+       </field>
+
+     </page>
+   </form>
+
+   <form name="chineseteaching">
+     <page number="1">
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>title</dc-element>
+         <dc-qualifier></dc-qualifier>
+         <repeatable>false</repeatable>
+         <label>Title</label>
+         <input-type>onebox</input-type>
+         <hint>Enter the main title of the item.</hint>
+         <required>You must enter a main title for this item.</required>
+       </field>
+
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>contributor</dc-element>
+         <dc-qualifier>author</dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>Creator</label>
+         <input-type>name</input-type>
+         <hint>Enter the author(s) of this work. Do not include degrees as part of the name.</hint>
+         <required>You must enter a creator</required>
+       </field>
+
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>subject</dc-element>
+         <dc-qualifier></dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>Subject Category</label>
+         <input-type>onebox</input-type>
+         <hint>Select approriate subjects.</hint>
+         <required></required>
+         <vocabulary closed="false">subjects</vocabulary>
+       </field>
+
+      <field>
+        <dc-schema>dc</dc-schema>
+        <dc-element>publisher</dc-element>
+        <dc-qualifier></dc-qualifier>
+        <repeatable>false</repeatable>
+        <label>Text Book Publisher</label>
+        <input-type>onebox</input-type>
+        <hint>Enter the name of the publisher of the previously issued instance of this item.</hint>
+        <required></required>
+      </field>
+
+      <field>
+        <dc-schema>dc</dc-schema>
+        <dc-element>description</dc-element>
+        <dc-qualifier>abstract</dc-qualifier>
+        <repeatable>false</repeatable>
+        <label>Abstract</label>
+        <input-type>textarea</input-type>
+        <hint>Enter the abstract of the item. </hint>
+        <required></required>
+      </field>
+
+      <field>
+        <dc-schema>dc</dc-schema>
+        <dc-element>date</dc-element>
+        <dc-qualifier>issued</dc-qualifier>
+        <repeatable>false</repeatable>
+        <label>Date of Creation</label>
+        <input-type>date</input-type>
+        <hint>You can leave out the day and/or month if they aren't applicable.</hint>
+        <required></required>
+      </field>
+
+      <field>
+        <dc-schema>dc</dc-schema>
+        <dc-element>tcfl</dc-element>
+        <dc-qualifier>source</dc-qualifier>
+        <repeatable>false</repeatable>
+        <label>Source</label>
+        <input-type>onebox</input-type>
+        <hint>You can put sources used to create this item here</hint>
+        <required></required>
+      </field>
+
+      <field>
+        <dc-schema>dc</dc-schema>
+        <dc-element>language</dc-element>
+        <dc-qualifier>iso</dc-qualifier>
+        <repeatable>false</repeatable>
+        <label>Language</label>
+        <input-type value-pairs-name="common_iso_languages">dropdown</input-type>
+        <hint>Select the language of the main content of the item.  If the language does not appear in the list, please select 'Other'.  If the content does not really have a language (for example, if it is a dataset or an image) please select 'N/A'.</hint>
+        <required></required>
+      </field>
+
+      <field>
+        <dc-schema>dc</dc-schema>
+        <dc-element>type</dc-element>
+        <dc-qualifier></dc-qualifier>
+        <repeatable>true</repeatable>
+        <label>Type</label>
+        <input-type value-pairs-name="common_types">dropdown</input-type>
+        <hint>Select the type(s) of content of the item. To select more than one value in the list, you may have to hold down the "CTRL" or "Shift" key.</hint>
+        <required></required>
+      </field>
+
+     </page>
+
+     <page number="2">
+
+        <field>
+            <dc-schema>dc</dc-schema>
+            <dc-element>tcfl</dc-element>
+            <dc-qualifier>text</dc-qualifier>
+            <repeatable>false</repeatable>
+            <label>Text</label>
+            <input-type>textarea</input-type>
+            <hint>Enter Text.</hint>
+            <required></required>
+        </field>
+
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>tcfl</dc-element>
+         <dc-qualifier>vocabulary</dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>Vocabulary</label>
+         <input-type>name</input-type>
+         <hint>Enter the vocabulary of the lesson.</hint>
+         <required></required>
+       </field>
+
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>tcfl</dc-element>
+         <dc-qualifier>question</dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>Question</label>
+         <input-type>onebox</input-type>
+         <hint>Enter the question of the lesson.</hint>
+         <required></required>
+       </field>
+
+       <field>
+           <dc-schema>dc</dc-schema>
+           <dc-element>tcfl</dc-element>
+           <dc-qualifier>multichoice</dc-qualifier>
+           <repeatable>true</repeatable>
+           <label>Multiple Choice</label>
+           <input-type>name</input-type>
+           <hint>Enter the question and choice(s).</hint>
+           <required></required>
+       </field>
+
+     </page>
+   </form>
+
    <form name="one">
      <page number="1">
        <field>
@@ -233,6 +561,17 @@ it, please enter the types and the actual numbers or codes.</hint>
  <!-- stores the associated stored-values in the database.                  -->
 
  <form-value-pairs>
+   <value-pairs value-pairs-name="peerreview_check" dc-term="description.peerreview">
+     <pair>
+       <displayed-value>Yes</displayed-value>
+       <stored-value>Yes</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>No</displayed-value>
+       <stored-value>No</stored-value>
+     </pair>
+   </value-pairs>
+
    <value-pairs value-pairs-name="common_identifiers" dc-term="identifier">
      <pair>
        <displayed-value>ISSN</displayed-value>
@@ -399,6 +738,57 @@ it, please enter the types and the actual numbers or codes.</hint>
        <displayed-value>(Other)</displayed-value>
        <stored-value>other</stored-value>
      </pair>
+   </value-pairs>
+
+   <value-pairs value-pairs-name="ou_group" dc-term="group">
+       <pair><displayed-value></displayed-value> <stored-value></stored-value></pair>
+       <pair><displayed-value>College of Architecture</displayed-value> <stored-value>College of Architecture</stored-value></pair>
+       <pair><displayed-value>College of Arts and Sciences</displayed-value> <stored-value>College of Arts and Sciences</stored-value></pair>
+       <pair><displayed-value>College of Arts and Sciences::Department of Anthropology</displayed-value> <stored-value>College of Arts and Sciences::Department of Anthropology</stored-value></pair>
+       <pair><displayed-value>College of Arts and Sciences::Department of Biology</displayed-value> <stored-value>College of Arts and Sciences::Department of Biology</stored-value></pair>
+       <pair><displayed-value>College of Arts and Sciences::Department of Chemistry and Biochemistry</displayed-value> <stored-value>College of Arts and Sciences::Department of Chemistry and Biochemistry</stored-value></pair>
+       <pair><displayed-value>College of Arts and Sciences::Department of Communication</displayed-value> <stored-value>College of Arts and Sciences::Department of Communication</stored-value></pair>
+       <pair><displayed-value>College of Arts and Sciences::Department of Economics</displayed-value> <stored-value>College of Arts and Sciences::Department of Economics</stored-value></pair>
+       <pair><displayed-value>College of Arts and Sciences::Department of English</displayed-value> <stored-value>College of Arts and Sciences::Department of English</stored-value></pair>
+       <pair><displayed-value>College of Arts and Sciences::Department of Health and Exercise Science</displayed-value> <stored-value>College of Arts and Sciences::Department of Health and Exercise Science</stored-value></pair>
+       <pair><displayed-value>College of Arts and Sciences::Department of History</displayed-value> <stored-value>College of Arts and Sciences::Department of History</stored-value></pair>
+       <pair><displayed-value>College of Arts and Sciences::Department of History of Science</displayed-value> <stored-value>College of Arts and Sciences::Department of History of Science</stored-value></pair>
+       <pair><displayed-value>College of Arts and Sciences::Department of Human Relations</displayed-value> <stored-value>College of Arts and Sciences::Department of Human Relations</stored-value></pair>
+       <pair><displayed-value>College of Arts and Sciences::Department of Mathematics</displayed-value> <stored-value>College of Arts and Sciences::Department of Mathematics</stored-value></pair>
+       <pair><displayed-value>College of Arts and Sciences::Department of Microbiology and Plant Biology</displayed-value> <stored-value>College of Arts and Sciences::Department of Microbiology and Plant Biology</stored-value></pair>
+       <pair><displayed-value>College of Arts and Sciences::Department of Modern Languages, Literatures, and Linguistics</displayed-value> <stored-value>College of Arts and Sciences::Department of Modern Languages, Literatures, and Linguistics</stored-value></pair>
+       <pair><displayed-value>College of Arts and Sciences::Department of Native American Studies</displayed-value> <stored-value>College of Arts and Sciences::Department of Native American Studies</stored-value></pair>
+       <pair><displayed-value>College of Arts and Sciences::Department of Philosophy</displayed-value> <stored-value>College of Arts and Sciences::Department of Philosophy</stored-value></pair>
+       <pair><displayed-value>College of Arts and Sciences::Department of Political Science</displayed-value> <stored-value>College of Arts and Sciences::Department of Political Science</stored-value></pair>
+       <pair><displayed-value>College of Arts and Sciences::Department of Psychology</displayed-value> <stored-value>College of Arts and Sciences::Department of Psychology</stored-value></pair>
+       <pair><displayed-value>College of Arts and Sciences::Department of Sociology</displayed-value> <stored-value>College of Arts and Sciences::Department of Sociology</stored-value></pair>
+       <pair><displayed-value>College of Arts and Sciences::Homer L. Dodge Department of Physics and Astronomy</displayed-value> <stored-value>College of Arts and Sciences::Homer L. Dodge Department of Physics and Astronomy</stored-value></pair>
+       <pair><displayed-value>College of Arts and Sciences::School of Library and Information Studies</displayed-value> <stored-value>College of Arts and Sciences::School of Library and Information Studies</stored-value></pair>
+       <pair><displayed-value>College of Arts and Sciences::School of Social Work</displayed-value> <stored-value>College of Arts and Sciences::School of Social Work</stored-value></pair>
+       <pair><displayed-value>College of Atmospheric &amp; Geographic Sciences</displayed-value> <stored-value>College of Atmospheric &amp; Geographic Sciences</stored-value></pair>
+       <pair><displayed-value>College of Atmospheric &amp; Geographic Sciences::Department of Geography and Environmental Sustainability</displayed-value> <stored-value>College of Atmospheric &amp; Geographic Sciences::Department of Geography and Environmental Sustainability</stored-value></pair>
+       <pair><displayed-value>College of Atmospheric &amp; Geographic Sciences::School of Meteorology</displayed-value> <stored-value>College of Atmospheric &amp; Geographic Sciences::School of Meteorology</stored-value></pair>
+       <pair><displayed-value>College of Engineering</displayed-value> <stored-value>College of Engineering</stored-value></pair>
+       <pair><displayed-value>College of Engineering::Department of Bioengineering</displayed-value> <stored-value>College of Engineering::Department of Bioengineering</stored-value></pair>
+       <pair><displayed-value>College of Engineering::Department of Engineering</displayed-value> <stored-value>College of Engineering::Department of Engineering</stored-value></pair>
+       <pair><displayed-value>College of Engineering::Department of Engineering Physics</displayed-value> <stored-value>College of Engineering::Department of Engineering Physics</stored-value></pair>
+       <pair><displayed-value>College of Engineering::School of Aerospace and Mechanical Engineering</displayed-value> <stored-value>College of Engineering::School of Aerospace and Mechanical Engineering</stored-value></pair>
+       <pair><displayed-value>College of Engineering::School of Chemical, Biological and Materials Engineering</displayed-value><stored-value>College of Engineering::School of Chemical, Biological and Materials Engineering</stored-value></pair>
+       <pair><displayed-value>College of Engineering::School of Civil Engineering and Environmental Science</displayed-value><stored-value>College of Engineering::School of Civil Engineering and Environmental Science</stored-value></pair>
+       <pair><displayed-value>College of Engineering::School of Computer Science</displayed-value> <stored-value>College of Engineering::School of Computer Science</stored-value></pair>
+       <pair><displayed-value>College of Engineering::School of Electrical and Computer Engineering</displayed-value> <stored-value>College of Engineering::School of Electrical and Computer Engineering</stored-value></pair>
+       <pair><displayed-value>College of Engineering::School of Industrial and Systems Engineering</displayed-value> <stored-value>College of Engineering::School of Industrial and Systems Engineering</stored-value></pair>
+       <pair><displayed-value>Gaylord College of Journalism and Mass Communication</displayed-value> <stored-value>Gaylord College of Journalism and Mass Communication</stored-value></pair>
+       <pair><displayed-value>Mewbourne College of Earth and Energy</displayed-value> <stored-value>Mewbourne College of Earth and Energy</stored-value></pair>
+       <pair><displayed-value>Mewbourne College of Earth and Energy::Conoco Phillips School of Geology and Geophysics</displayed-value> <stored-value>Mewbourne College of Earth and Energy::Conoco Phillips School of Geology and Geophysics</stored-value></pair>
+       <pair><displayed-value>Mewbourne College of Earth and Energy::Mewbourne School of Petroleum and Geological Engineering</displayed-value> <stored-value>Mewbourne College of Earth and Energy::Mewbourne School of Petroleum and Geological Engineering</stored-value></pair>
+       <pair><displayed-value>Michael F. Price College of Business</displayed-value> <stored-value>Michael F. Price College of Business</stored-value></pair>
+       <pair><displayed-value>Weitzenhoffer Family College of Fine Arts</displayed-value> <stored-value>Weitzenhoffer Family College of Fine Arts</stored-value></pair>
+       <pair><displayed-value>Weitzenhoffer Family College of Fine Arts::Peggy Dow Helmerich School of Drama</displayed-value> <stored-value>Weitzenhoffer Family College of Fine Arts::Peggy Dow Helmerich School of Drama</stored-value></pair>
+       <pair><displayed-value>Weitzenhoffer Family College of Fine Arts::School of Art and Art History</displayed-value> <stored-value>Weitzenhoffer Family College of Fine Arts::School of Art and Art History</stored-value></pair>
+       <pair><displayed-value>Weitzenhoffer Family College of Fine Arts::School of Dance</displayed-value> <stored-value>Weitzenhoffer Family College of Fine Arts::School of Dance</stored-value></pair>
+       <pair><displayed-value>Weitzenhoffer Family College of Fine Arts::School of Music</displayed-value> <stored-value>Weitzenhoffer Family College of Fine Arts::School of Music</stored-value></pair>
+       <pair><displayed-value>Other</displayed-value> <stored-value>Other</stored-value></pair>
    </value-pairs>
 
  </form-value-pairs>
