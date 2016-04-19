@@ -314,7 +314,7 @@
         <message key="xmlui.ArtifactBrowser.RestrictedItem.para_item_withdrawn">The selected item is withdrawn and is no longer available.</message>
         <message key="xmlui.ArtifactBrowser.RestrictedItem.para_item_restricted_auth">The selected item is access restricted and requires credentials to view. Please login to access the item.</message>
         <message key="xmlui.ArtifactBrowser.RestrictedItem.para_item_restricted">Your user account does not have the credentials to view this item. Please contact the system administrator if you have any questions.</message>
-        
+
 	<!-- Authentication messages used at the top of the login page:  -->
 	<message key="xmlui.ArtifactBrowser.RestrictedItem.auth_header">The item is restricted</message>
 	<message key="xmlui.ArtifactBrowser.RestrictedItem.auth_message">The item you are attempting to access is a restricted item and requires credentials to view. Please login below to access the item.</message>
@@ -390,7 +390,7 @@
 	<message key="xmlui.ArtifactBrowser.ItemRequestResponseTrueForm.subject">Subject</message>
 	<message key="xmlui.ArtifactBrowser.ItemRequestResponseTrueForm.mail">Send</message>
 	<message key="xmlui.ArtifactBrowser.ItemRequestResponseTrueForm.back">Back</message>
-	
+
 	 <!-- org.dspace.app.xmlui.artifactbrowser.ItemRequestChangeStatusForm.java -->
 	<message key="xmlui.ArtifactBrowser.ItemRequestChangeStatusForm.title">Change permissions request</message>
 	<message key="xmlui.ArtifactBrowser.ItemRequestChangeStatusForm.trail">Change permissions request</message>
@@ -401,7 +401,7 @@
     <message key="xmlui.ArtifactBrowser.ItemRequestChangeStatusForm.name.error">The name is required</message>
 	<message key="xmlui.ArtifactBrowser.ItemRequestChangeStatusForm.email.error">The e-mail address is required</message>
 	<message key="xmlui.ArtifactBrowser.ItemRequestChangeStatusForm.changeToOpen">Change to open access</message>
-	        
+
 	<!-- org.dspace.app.xmlui.artifactbrowser.ItemRequestResponseFalseForm.java -->
 	<message key="xmlui.ArtifactBrowser.ItemRequestStatusChanged.title">Request sent</message>
 	<message key="xmlui.ArtifactBrowser.ItemRequestStatusChanged.trail">Request sent</message>
@@ -438,7 +438,7 @@
     <message key="xmlui.ArtifactBrowser.ItemRequestResponseSent.para1">Your response has been sent.</message>
 
 
-	
+
 	<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 		                EPerson Aspect
@@ -765,6 +765,10 @@
 	<message key="xmlui.Submission.submit.DescribeStep.required_field">This field is required</message>
 	<message key="xmlui.Submission.submit.DescribeStep.last_name_help">Last name, <i>e.g. Smith</i></message>
 	<message key="xmlui.Submission.submit.DescribeStep.first_name_help">First name(s) + "Jr", <i>e.g. Donald Jr</i></message>
+	<message key="xmlui.Submission.submit.DescribeStep.question_help">Question</message>
+	<message key="xmlui.Submission.submit.DescribeStep.choice_help">Choices <i>use semicolon(;) for each choice</i></message>
+	<message key="xmlui.Submission.submit.DescribeStep.chinese_help">New Word</message>
+	<message key="xmlui.Submission.submit.DescribeStep.english_help">In English</message>
 	<message key="xmlui.Submission.submit.DescribeStep.year">Year</message>
 	<message key="xmlui.Submission.submit.DescribeStep.month">Month</message>
 	<message key="xmlui.Submission.submit.DescribeStep.day">Day</message>
@@ -2051,7 +2055,7 @@
 	<message key="xmlui.administrative.NotAuthorized.para1b">system administrators</message>
 	<message key="xmlui.administrative.NotAuthorized.para1c">.</message>
 	<message key="xmlui.administrative.NotAuthorized.para2">Login as another user</message>
-        
+
         <!-- System-wide Curation Tasks form (org.dspace.app.xmlui.aspect.administrative.CurateForm) -->
         <message key="xmlui.administrative.CurateForm.title">System Curation Tasks</message>
         <message key="xmlui.administrative.CurateForm.trail">Curation Tasks</message>
@@ -2175,7 +2179,7 @@
 	<message key="xmlui.dri2xhtml.structural.contact-link">Contact Us</message>
 	<message key="xmlui.dri2xhtml.structural.feedback-link">Send Feedback</message>
 
-	<message key="xmlui.dri2xhtml.structural.head-subtitle">DSpace Repository</message>
+	<message key="xmlui.dri2xhtml.structural.head-subtitle">DSpace@CFL</message>
 
 	<message key="xmlui.dri2xhtml.structural.profile">Profile: </message>
 	<message key="xmlui.dri2xhtml.structural.logout">Logout</message>
