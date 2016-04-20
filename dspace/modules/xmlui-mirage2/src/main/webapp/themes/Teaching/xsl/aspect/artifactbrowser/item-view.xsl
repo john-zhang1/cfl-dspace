@@ -107,28 +107,137 @@
         <div class="item-summary-view-metadata">
             <xsl:call-template name="itemSummaryView-DIM-title"/>
             <div class="row">
-                <div class="col-sm-4">
-                    <div class="row">
-                        <div class="col-xs-6 col-sm-12">
-                            <xsl:call-template name="itemSummaryView-DIM-thumbnail"/>
-                        </div>
-                        <div class="col-xs-6 col-sm-12">
-                            <xsl:call-template name="itemSummaryView-DIM-file-section"/>
-                        </div>
-                    </div>
-                    <xsl:call-template name="itemSummaryView-DIM-date"/>
-                    <xsl:call-template name="itemSummaryView-DIM-authors"/>
-                    <xsl:if test="$ds_item_view_toggle_url != ''">
-                        <xsl:call-template name="itemSummaryView-show-full"/>
-                    </xsl:if>
-                </div>
-                <div class="col-sm-8">
-                    <xsl:call-template name="itemSummaryView-DIM-abstract"/>
-                    <xsl:call-template name="itemSummaryView-DIM-URI"/>
-                    <xsl:call-template name="itemSummaryView-collections"/>
-                </div>
+                <div class="col-sm-12"><xsl:text>&#160;</xsl:text></div>
+                <xsl:call-template name="teaching-book-session" />
+                <xsl:call-template name="teaching-text-session" />
+                <xsl:call-template name="teaching-word-session" />
+                <xsl:call-template name="teaching-image-session" />
+                <xsl:call-template name="teaching-video-session" />
+                <xsl:call-template name="teaching-exercise-session" />
             </div>
         </div>
+    </xsl:template>
+
+    <xsl:template name="teaching-book-session">
+        <h4 class="page-header first-page-header">Books</h4>
+        <div class="ds-table-responsive">
+            <table class="ds-includeSet-table detailtable table table-striped table-hover">
+                <xsl:call-template name="teaching-book-fields" />
+            </table>
+        </div>
+    </xsl:template>
+    <xsl:template name="teaching-text-session">
+        <h4 class="page-header first-page-header">Text</h4>
+        <div class="ds-table-responsive">
+            <table class="ds-includeSet-table detailtable table table-striped table-hover">
+                <xsl:call-template name="teaching-text-fields" />
+            </table>
+        </div>
+    </xsl:template>
+    <xsl:template name="teaching-word-session">
+        <h4 class="page-header first-page-header">New Words</h4>
+        <div class="ds-table-responsive">
+            <table class="ds-includeSet-table detailtable table table-striped table-hover">
+                <xsl:call-template name="teaching-word-fields" />
+            </table>
+        </div>
+    </xsl:template>
+    <xsl:template name="teaching-image-session">
+        <h4 class="page-header first-page-header">Images</h4>
+        <div class="ds-table-responsive">
+            <table class="ds-includeSet-table detailtable table table-striped table-hover">
+                <xsl:call-template name="teaching-image-fields" />
+            </table>
+        </div>
+    </xsl:template>
+    <xsl:template name="teaching-video-session">
+        <h4 class="page-header first-page-header">Videos</h4>
+        <div class="ds-table-responsive">
+            <table class="ds-includeSet-table detailtable table table-striped table-hover">
+                <xsl:call-template name="teaching-video-fields" />
+            </table>
+        </div>
+    </xsl:template>
+    <xsl:template name="teaching-exercise-session">
+        <h4 class="page-header first-page-header">Exercises</h4>
+        <div class="ds-table-responsive">
+            <table class="ds-includeSet-table detailtable table table-striped table-hover">
+              <h5>Questions:</h5>
+              <xsl:call-template name="teaching-exercise-fields" />
+              <h5>Multiple Choices:</h5>
+              <xsl:call-template name="teaching-multichoice-fields" />
+            </table>
+        </div>
+    </xsl:template>
+
+    <xsl:template name="teaching-book-fields">
+      <div class="col-sm-12">
+          <div class="row">
+              <div class="col-xs-6 col-sm-12">
+                  <xsl:call-template name="itemSummaryView-DIM-book-section"/>
+              </div>
+          </div>
+      </div>
+    </xsl:template>
+
+    <xsl:template name="teaching-text-fields">
+      <div class="col-sm-12">
+          <div class="row">
+              <div class="col-xs-6 col-sm-12">
+                  <xsl:call-template name="itemSummaryView-DIM-text-section"/>
+              </div>
+          </div>
+      </div>
+    </xsl:template>
+
+    <xsl:template name="teaching-word-fields">
+      <div class="col-sm-12">
+          <div class="row">
+              <div class="col-xs-6 col-sm-12">
+                  <xsl:call-template name="itemSummaryView-DIM-word-section"/>
+              </div>
+          </div>
+      </div>
+    </xsl:template>
+
+    <xsl:template name="teaching-image-fields">
+      <div class="col-sm-12">
+          <div class="row">
+              <div class="col-xs-6 col-sm-12">
+                  <xsl:call-template name="itemSummaryView-DIM-image-section"/>
+              </div>
+          </div>
+      </div>
+    </xsl:template>
+
+    <xsl:template name="teaching-video-fields">
+      <div class="col-sm-12">
+          <div class="row">
+              <div class="col-xs-6 col-sm-12">
+                  <xsl:call-template name="itemSummaryView-DIM-video-section"/>
+              </div>
+          </div>
+      </div>
+    </xsl:template>
+
+    <xsl:template name="teaching-exercise-fields">
+      <div class="col-sm-12">
+          <div class="row">
+              <div class="col-xs-6 col-sm-12">
+                  <xsl:call-template name="itemSummaryView-DIM-exercise-section"/>
+              </div>
+          </div>
+      </div>
+    </xsl:template>
+
+    <xsl:template name="teaching-multichoice-fields">
+      <div class="col-sm-12">
+          <div class="row">
+              <div class="col-xs-6 col-sm-12">
+                  <xsl:call-template name="itemSummaryView-DIM-multichoice-section"/>
+              </div>
+          </div>
+      </div>
     </xsl:template>
 
     <xsl:template name="itemSummaryView-DIM-title">
@@ -163,6 +272,65 @@
                 </h2>
             </xsl:otherwise>
         </xsl:choose>
+    </xsl:template>
+
+    <xsl:template name="itemSummaryView-DIM-thumbnail-gallery">
+        <div class="thumbnail">
+            <xsl:choose>
+                <xsl:when test="//mets:fileSec/mets:fileGrp[@USE='THUMBNAIL']">
+                    <xsl:variable name="src">
+                        <xsl:value-of select="//mets:fileSec/mets:fileGrp[@USE='THUMBNAIL']/mets:file[1]/mets:FLocat[@LOCTYPE='URL']/@xlink:href" />
+                    </xsl:variable>
+                    <xsl:variable name="handle">
+                        <xsl:value-of select="ancestor::mets:METS/@OBJID" />
+                    </xsl:variable>
+                    <xsl:variable name="title">
+                      <xsl:choose>
+                          <xsl:when test="dim:field[@element='title']">
+                              <xsl:value-of select="dim:field[@element='title'][1]/node()"/>
+                          </xsl:when>
+                          <xsl:otherwise>
+                              <i18n:text>xmlui.dri2xhtml.METS-1.0.no-title</i18n:text>
+                          </xsl:otherwise>
+                      </xsl:choose>
+                    </xsl:variable>
+
+                    <xsl:element name="a">
+                        <xsl:attribute name="href">
+                            <xsl:value-of select="$handle"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="data-largesrc">
+                            <xsl:value-of select="$src"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="data-title">
+                            <xsl:value-of select="$title"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="data-description">
+                            <xsl:choose>
+                                <xsl:when test="dim:field[@element='description']">
+                                    <xsl:value-of select="dim:field[@element='description'][1]/node()"/>
+                                </xsl:when>
+                            </xsl:choose>
+                        </xsl:attribute>
+                        <img alt="Thumbnail">
+                            <xsl:attribute name="src"><xsl:value-of select="$src"/></xsl:attribute>
+                            <xsl:attribute name="width">185</xsl:attribute>
+                            <xsl:attribute name="title"></xsl:attribute>
+                        </img>
+                    </xsl:element>
+
+                </xsl:when>
+                <xsl:otherwise>
+                    <img alt="Thumbnail">
+                        <xsl:attribute name="data-src">
+                            <xsl:text>holder.js/100%x</xsl:text>
+                            <xsl:value-of select="$thumbnail.maxheight"/>
+                            <xsl:text>/text:No Thumbnail</xsl:text>
+                        </xsl:attribute>
+                    </img>
+                </xsl:otherwise>
+            </xsl:choose>
+        </div>
     </xsl:template>
 
     <xsl:template name="itemSummaryView-DIM-thumbnail">
@@ -323,6 +491,339 @@
         </xsl:if>
     </xsl:template>
 
+    <xsl:template name="itemSummaryView-DIM-book-section">
+        <xsl:choose>
+            <xsl:when test="//mets:fileSec/mets:fileGrp[@USE='CONTENT' or @USE='ORIGINAL' or @USE='LICENSE']/mets:file">
+                <div class="item-page-field-wrapper table word-break">
+                    <xsl:variable name="label-1">
+                            <xsl:choose>
+                                <xsl:when test="confman:getProperty('mirage2.item-view.bitstream.href.label.1')">
+                                    <xsl:value-of select="confman:getProperty('mirage2.item-view.bitstream.href.label.1')"/>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:text>label</xsl:text>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                    </xsl:variable>
+
+                    <xsl:variable name="label-2">
+                            <xsl:choose>
+                                <xsl:when test="confman:getProperty('mirage2.item-view.bitstream.href.label.2')">
+                                    <xsl:value-of select="confman:getProperty('mirage2.item-view.bitstream.href.label.2')"/>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:text>title</xsl:text>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                    </xsl:variable>
+
+                    <xsl:for-each select="//mets:fileSec/mets:fileGrp[@USE='CONTENT' or @USE='ORIGINAL' or @USE='LICENSE']/mets:file">
+                        <xsl:variable name="mimetype">
+                            <xsl:value-of select="@MIMETYPE"/>
+                        </xsl:variable>
+                        <xsl:if test="$mimetype = 'application/pdf'">
+                            <xsl:call-template name="itemSummaryView-DIM-pdffile-section-entry">
+                                <xsl:with-param name="href" select="mets:FLocat[@LOCTYPE='URL']/@xlink:href" />
+                                <xsl:with-param name="mimetype" select="@MIMETYPE" />
+                                <xsl:with-param name="label-1" select="$label-1" />
+                                <xsl:with-param name="label-2" select="$label-2" />
+                                <xsl:with-param name="title" select="mets:FLocat[@LOCTYPE='URL']/@xlink:title" />
+                                <xsl:with-param name="label" select="mets:FLocat[@LOCTYPE='URL']/@xlink:label" />
+                                <xsl:with-param name="size" select="@SIZE" />
+                            </xsl:call-template>
+                        </xsl:if>
+                    </xsl:for-each>
+                </div>
+            </xsl:when>
+            <!-- Special case for handling ORE resource maps stored as DSpace bitstreams -->
+            <xsl:when test="//mets:fileSec/mets:fileGrp[@USE='ORE']">
+                <xsl:apply-templates select="//mets:fileSec/mets:fileGrp[@USE='ORE']" mode="itemSummaryView-DIM" />
+            </xsl:when>
+        </xsl:choose>
+    </xsl:template>
+
+    <xsl:template name="itemSummaryView-DIM-text-section">
+        <xsl:choose>
+            <xsl:when test="//mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim">
+                <ol class="list-group">
+                    <xsl:for-each select="dim:field[@qualifier='text']">
+                        <xsl:variable name='classtext' select="./node()"/>
+                        <li class="list-group-item list-exercise-item">
+                            <p><xsl:value-of select="$classtext"/>
+                            </p>
+                        </li>
+                    </xsl:for-each>
+                </ol>
+            </xsl:when>
+        </xsl:choose>
+    </xsl:template>
+
+    <xsl:template name="itemSummaryView-DIM-word-section">
+        <xsl:choose>
+            <xsl:when test="//mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim">
+                <ol class="list-group">
+                    <xsl:for-each select="dim:field[@qualifier='vocabulary']">
+                        <xsl:variable name='vocabulary' select="./node()"/>
+                        <li class="list-group-item list-exercise-item">
+                            <p><xsl:value-of select="substring-before($vocabulary,'(A)')"/>
+                            <xsl:call-template name="vacabulary-speech">
+                                <xsl:with-param name="vocabulary" select="substring-before(./node(),'(A)')" />
+                            </xsl:call-template>
+                            <xsl:text>&#160;&#160;</xsl:text>
+                            <xsl:value-of select="substring-after($vocabulary,'(A).')"/>
+                            </p>
+                        </li>
+                    </xsl:for-each>
+                </ol>
+            </xsl:when>
+        </xsl:choose>
+    </xsl:template>
+
+    <xsl:template name="vacabulary-speech">
+        <xsl:param name="vocabulary" />
+        <xsl:text>&#160;&#160;</xsl:text>
+        <button onclick='responsiveVoice.speak("{$vocabulary}", "Chinese Female");' style="font-size:16px"><i class="fa fa-volume-up"></i></button>
+    </xsl:template>
+
+    <xsl:template name="itemSummaryView-DIM-image-section">
+        <xsl:choose>
+            <xsl:when test="//mets:fileSec/mets:fileGrp[@USE='CONTENT' or @USE='ORIGINAL' or @USE='LICENSE']/mets:file">
+                <div class="item-page-field-wrapper table word-break">
+                    <ul class="og-grid" id="og-grid">
+                        <xsl:for-each select="//mets:fileSec/mets:fileGrp[@USE='CONTENT' or @USE='ORIGINAL' or @USE='LICENSE']/mets:file">
+                            <xsl:variable name="mimetype">
+                                <xsl:value-of select="@MIMETYPE"/>
+                            </xsl:variable>
+                            <xsl:if test="contains($mimetype, 'image')">
+                                <xsl:variable name="filename">
+                                    <xsl:value-of select="mets:FLocat[@LOCTYPE='URL']/@xlink:title"/>
+                                </xsl:variable>
+                                <xsl:variable name="filesrc">
+                                    <xsl:value-of select="mets:FLocat[@LOCTYPE='URL']/@xlink:href"/>
+                                </xsl:variable>
+                                <li class="thumbnail">
+                                    <xsl:choose>
+                                        <xsl:when test="//mets:fileSec/mets:fileGrp[@USE='THUMBNAIL']">
+                                            <xsl:for-each select="//mets:fileSec/mets:fileGrp[@USE='THUMBNAIL']/mets:file">
+                                                <xsl:variable name="thumbnailname">
+                                                    <xsl:value-of select="mets:FLocat[@LOCTYPE='URL']/@xlink:title"/>
+                                                </xsl:variable>
+                                                <xsl:if test="contains($thumbnailname, $filename)">
+                                                    <xsl:variable name="src">
+                                                        <xsl:value-of select="mets:FLocat[@LOCTYPE='URL']/@xlink:href" />
+                                                    </xsl:variable>
+                                                    <xsl:variable name="handle">
+                                                        <xsl:value-of select="ancestor::mets:METS/@OBJID" />
+                                                    </xsl:variable>
+                                                    <xsl:variable name="title">
+                                                      <xsl:choose>
+                                                          <xsl:when test="ancestor::mets:METS/mets:dmdSec">
+                                                              <xsl:value-of select="ancestor::mets:METS/mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim/dim:field[@element='title'][1]/node()"/>
+                                                          </xsl:when>
+                                                          <xsl:otherwise>
+                                                              <i18n:text>xmlui.dri2xhtml.METS-1.0.no-title</i18n:text>
+                                                          </xsl:otherwise>
+                                                      </xsl:choose>
+                                                    </xsl:variable>
+                                                    <xsl:element name="a">
+                                                        <xsl:attribute name="href">
+                                                            <xsl:value-of select="$handle"/>
+                                                        </xsl:attribute>
+                                                        <xsl:attribute name="data-largesrc">
+                                                            <xsl:value-of select="$filesrc"/>
+                                                        </xsl:attribute>
+                                                        <xsl:attribute name="data-title">
+                                                            <xsl:value-of select="$title"/>
+                                                        </xsl:attribute>
+                                                        <xsl:attribute name="data-description">
+                                                            <xsl:choose>
+                                                                <xsl:when test="ancestor::mets:METS/mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim/dim:field[@element='description']">
+                                                                    <xsl:value-of select="ancestor::mets:METS/mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim/dim:field[@element='description'][1]/node()"/>
+                                                                </xsl:when>
+                                                            </xsl:choose>
+                                                        </xsl:attribute>
+                                                        <img alt="Thumbnail">
+                                                            <xsl:attribute name="src"><xsl:value-of select="$src"/></xsl:attribute>
+                                                            <xsl:attribute name="width">185</xsl:attribute>
+                                                            <xsl:attribute name="title"></xsl:attribute>
+                                                        </img>
+                                                    </xsl:element>
+                                                </xsl:if>
+                                            </xsl:for-each>
+                                        </xsl:when>
+                                        <xsl:otherwise>
+                                            <img alt="Thumbnail">
+                                                <xsl:attribute name="data-src">
+                                                    <xsl:text>holder.js/100%x</xsl:text>
+                                                    <xsl:value-of select="$thumbnail.maxheight"/>
+                                                    <xsl:text>/text:No Thumbnail</xsl:text>
+                                                </xsl:attribute>
+                                            </img>
+                                        </xsl:otherwise>
+                                    </xsl:choose>
+                                </li>
+                            </xsl:if>
+                        </xsl:for-each>
+                    </ul>
+                </div>
+            </xsl:when>
+            <!-- Special case for handling ORE resource maps stored as DSpace bitstreams -->
+            <xsl:when test="//mets:fileSec/mets:fileGrp[@USE='ORE']">
+                <xsl:apply-templates select="//mets:fileSec/mets:fileGrp[@USE='ORE']" mode="itemSummaryView-DIM" />
+            </xsl:when>
+        </xsl:choose>
+    </xsl:template>
+
+    <xsl:template name="itemSummaryView-DIM-video-section">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <xsl:choose>
+            <xsl:when test="//mets:fileSec/mets:fileGrp[@USE='CONTENT' or @USE='ORIGINAL' or @USE='LICENSE']/mets:file">
+                <div class="item-page-field-wrapper table word-break">
+                    <div class="container-fluid">
+                        <xsl:for-each select="//mets:fileSec/mets:fileGrp[@USE='CONTENT' or @USE='ORIGINAL' or @USE='LICENSE']/mets:file">
+                            <xsl:variable name="mimetype">
+                                <xsl:value-of select="@MIMETYPE"/>
+                            </xsl:variable>
+                            <xsl:if test="contains($mimetype, 'video')">
+                                <xsl:variable name="filename">
+                                    <xsl:value-of select="mets:FLocat[@LOCTYPE='URL']/@xlink:title"/>
+                                </xsl:variable>
+                                <xsl:variable name="filesrc">
+                                    <xsl:value-of select="mets:FLocat[@LOCTYPE='URL']/@xlink:href"/>
+                                </xsl:variable>
+                                <xsl:choose>
+                                    <xsl:when test="//mets:fileSec/mets:fileGrp[@USE='THUMBNAIL']">
+                                        <xsl:for-each select="//mets:fileSec/mets:fileGrp[@USE='THUMBNAIL']/mets:file">
+                                            <xsl:variable name="thumbnailname">
+                                                <xsl:value-of select="mets:FLocat[@LOCTYPE='URL']/@xlink:title"/>
+                                            </xsl:variable>
+                                            <xsl:if test="contains($thumbnailname, $filename)">
+                                                <xsl:variable name="poster">
+                                                    <xsl:value-of select="mets:FLocat[@LOCTYPE='URL']/@xlink:href" />
+                                                </xsl:variable>
+                                                <xsl:variable name="playbutton">
+                                                    <xsl:value-of select="concat($theme-path,'images/play-button.png')"/>
+                                                </xsl:variable>
+                                                <xsl:variable name="num" select="position()"/>
+                                                <xsl:variable name="id">
+                                                    <xsl:value-of select="$num" />
+                                                    <xsl:text>js</xsl:text>
+                                                </xsl:variable>
+
+                                                <div style="display:none;" id="{$id}">
+                                                    <video class="lg-video-object lg-html5 video-js vjs-default-skin" poster="{$poster}" controls="" preload="none">
+                                                        <source src="{$filesrc}" type="{$mimetype}"/>
+                                                         Your browser does not support HTML5 video.
+                                                    </video>
+                                                </div>
+
+                                                <script>
+                                                    var displaysection = $('.container-fluid > .mrb35');
+                                                    var displaywrapper =
+                                                        '<div class="demo-gallery dark mrb35">' +
+                                                            '<ul id="html5-videos-videojs" class="list-unstyled row">' +
+                                                            '</ul>' +
+                                                        '</div>';
+
+                                                    if(displaysection.length==0){
+                                                        $('.container-fluid').append(displaywrapper);
+                                                    }
+
+                                                    addGallery();
+
+                                                    function addGallery(){
+                                                        var gallerywrapper =
+                                                            '<li class="col-xs-6 col-sm-4 col-md-3 video" data-sub-html="&lt;h4&gt;{$filename}&lt;/h4&gt;" data-poster="{$poster}" data-html="#{$id}">' +
+                                                               '<a href="">' +
+                                                                   '<img class="img-responsive" src="{$poster}"/>' +
+                                                                   '<div class="demo-gallery-poster">' +
+                                                                       '<img src="{$playbutton}"/>' +
+                                                                   '</div>' +
+                                                               '</a>' +
+                                                           '</li>';
+
+                                                       $('.list-unstyled.row').append(gallerywrapper);
+                                                    }
+
+                                                </script>
+                                            </xsl:if>
+                                        </xsl:for-each>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <img alt="Thumbnail">
+                                            <xsl:attribute name="data-src">
+                                                <xsl:text>holder.js/100%x</xsl:text>
+                                                <xsl:value-of select="$thumbnail.maxheight"/>
+                                                <xsl:text>/text:No Thumbnail</xsl:text>
+                                            </xsl:attribute>
+                                        </img>
+                                    </xsl:otherwise>
+                                </xsl:choose>
+                            </xsl:if>
+                        </xsl:for-each>
+                    </div>
+                </div>
+            </xsl:when>
+            <!-- Special case for handling ORE resource maps stored as DSpace bitstreams -->
+            <xsl:when test="//mets:fileSec/mets:fileGrp[@USE='ORE']">
+                <xsl:apply-templates select="//mets:fileSec/mets:fileGrp[@USE='ORE']" mode="itemSummaryView-DIM" />
+            </xsl:when>
+        </xsl:choose>
+    </xsl:template>
+
+    <xsl:template name="itemSummaryView-DIM-exercise-section">
+        <xsl:choose>
+            <xsl:when test="//mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim">
+                <ol class="list-group">
+                    <xsl:for-each select="dim:field[@qualifier='question']">
+                        <xsl:variable name='question' select="./node()"/>
+                        <li class="list-group-item list-exercise-item">
+                            <p><xsl:value-of select="$question"/></p>
+                        </li>
+                    </xsl:for-each>
+                </ol>
+            </xsl:when>
+        </xsl:choose>
+    </xsl:template>
+
+    <xsl:template name="itemSummaryView-DIM-multichoice-section">
+        <xsl:choose>
+            <xsl:when test="//mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim">
+                <ol class="list-group">
+                    <xsl:for-each select="dim:field[@qualifier='multichoice']">
+                        <xsl:variable name='multichoice' select="./node()"/>
+                        <xsl:variable name='question'>
+                            <xsl:value-of select="substring-before($multichoice,'(A)')"/>
+                        </xsl:variable>
+                        <li class="list-group-item list-exercise-item">
+                            <p><xsl:value-of select="$question"/></p>
+                            <xsl:call-template name="splitMultipleChoices">
+                                <xsl:with-param name="pText" select="concat(' (A)', substring-after($multichoice,'(A)'))" />
+                            </xsl:call-template>
+                        </li>
+                    </xsl:for-each>
+                </ol>
+            </xsl:when>
+        </xsl:choose>
+    </xsl:template>
+
+    <xsl:template name="splitMultipleChoices">
+        <xsl:param name="pText"/>
+        <ul class="list-group">
+        <xsl:if test="string-length($pText)">
+            <xsl:if test="not($pText=.)">
+                <li class="list-group-item list-multichoice-item">
+                    <label><input type="checkbox" name="q4"/>&#160;</label>
+                    <xsl:value-of select="substring-before(concat($pText,';'),';')"/>
+                </li>
+            </xsl:if>
+            <xsl:call-template name="splitMultipleChoices">
+                <xsl:with-param name="pText" select="substring-after($pText, ';')"/>
+            </xsl:call-template>
+        </xsl:if>
+        </ul>
+    </xsl:template>
+
     <xsl:template name="itemSummaryView-DIM-file-section">
         <xsl:choose>
             <xsl:when test="//mets:fileSec/mets:fileGrp[@USE='CONTENT' or @USE='ORIGINAL' or @USE='LICENSE']/mets:file">
@@ -445,6 +946,160 @@
                 <xsl:text>)</xsl:text>
             </a>
         </div>
+    </xsl:template>
+
+    <xsl:template name="itemSummaryView-DIM-pdffile-section-entry">
+        <xsl:param name="href" />
+        <xsl:param name="mimetype" />
+        <xsl:param name="label-1" />
+        <xsl:param name="label-2" />
+        <xsl:param name="title" />
+        <xsl:param name="label" />
+        <xsl:param name="size" />
+        <div>
+          <div style='padding:50;'/>
+          <div>
+            <button id="prev" onclick="goPrevious()">Previous</button>
+            <button id="next" onclick="goNext()">Next</button>
+            <button id="next" onclick="expandscreen()">Expand</button>
+            <button id="next" onclick="collapsescreen()">Collapse</button>
+            <span>Page: <span id="page_num"></span> / <span id="page_count"></span></span>
+          </div>
+
+          <div>
+              <canvas id="the-canvas" style="border:1px solid black"></canvas>
+            </div>
+
+            <a>
+                <xsl:attribute name="href">
+                    <xsl:value-of select="$href"/>
+                </xsl:attribute>
+                <xsl:call-template name="getFileIcon">
+                    <xsl:with-param name="mimetype">
+                        <xsl:value-of select="substring-before($mimetype,'/')"/>
+                        <xsl:text>/</xsl:text>
+                        <xsl:value-of select="substring-after($mimetype,'/')"/>
+                    </xsl:with-param>
+                </xsl:call-template>
+                <xsl:choose>
+                    <xsl:when test="contains($label-1, 'label') and string-length($label)!=0">
+                        <xsl:value-of select="$label"/>
+                    </xsl:when>
+                    <xsl:when test="contains($label-1, 'title') and string-length($title)!=0">
+                        <xsl:value-of select="$title"/>
+                    </xsl:when>
+                    <xsl:when test="contains($label-2, 'label') and string-length($label)!=0">
+                        <xsl:value-of select="$label"/>
+                    </xsl:when>
+                    <xsl:when test="contains($label-2, 'title') and string-length($title)!=0">
+                        <xsl:value-of select="$title"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:call-template name="getFileTypeDesc">
+                            <xsl:with-param name="mimetype">
+                                <xsl:value-of select="substring-before($mimetype,'/')"/>
+                                <xsl:text>/</xsl:text>
+                                <xsl:choose>
+                                    <xsl:when test="contains($mimetype,';')">
+                                        <xsl:value-of select="substring-before(substring-after($mimetype,'/'),';')"/>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <xsl:value-of select="substring-after($mimetype,'/')"/>
+                                    </xsl:otherwise>
+                                </xsl:choose>
+                            </xsl:with-param>
+                        </xsl:call-template>
+                    </xsl:otherwise>
+                </xsl:choose>
+                <xsl:text> (</xsl:text>
+                <xsl:choose>
+                    <xsl:when test="$size &lt; 1024">
+                        <xsl:value-of select="$size"/>
+                        <i18n:text>xmlui.dri2xhtml.METS-1.0.size-bytes</i18n:text>
+                    </xsl:when>
+                    <xsl:when test="$size &lt; 1024 * 1024">
+                        <xsl:value-of select="substring(string($size div 1024),1,5)"/>
+                        <i18n:text>xmlui.dri2xhtml.METS-1.0.size-kilobytes</i18n:text>
+                    </xsl:when>
+                    <xsl:when test="$size &lt; 1024 * 1024 * 1024">
+                        <xsl:value-of select="substring(string($size div (1024 * 1024)),1,5)"/>
+                        <i18n:text>xmlui.dri2xhtml.METS-1.0.size-megabytes</i18n:text>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:value-of select="substring(string($size div (1024 * 1024 * 1024)),1,5)"/>
+                        <i18n:text>xmlui.dri2xhtml.METS-1.0.size-gigabytes</i18n:text>
+                    </xsl:otherwise>
+                </xsl:choose>
+                <xsl:text>)</xsl:text>
+            </a>
+        </div>
+        <xsl:call-template name="add-pdfreader-js" />
+    </xsl:template>
+
+    <xsl:template name="add-pdfreader-js">
+      <script type="text/javascript" src="https://raw.github.com/mozilla/pdf.js/gh-pages/build/pdf.js">&#160;</script>
+
+        <script><xsl:text>
+          // var url = 'http://cdn.mozilla.net/pdfjs/tracemonkey.pdf';
+          var url = '</xsl:text><xsl:value-of select="mets:FLocat[@LOCTYPE='URL']/@xlink:href"/><xsl:text>';
+
+          PDFJS.disableWorker = true;
+
+          var pdfDoc = null,
+              pageNum = 1,
+              scale = 0.25,
+              canvas = document.getElementById('the-canvas'),
+              ctx = canvas.getContext('2d');
+
+          function renderPage(num) {
+            pdfDoc.getPage(num).then(function(page) {
+              var viewport = page.getViewport(scale);
+              canvas.height = viewport.height;
+              canvas.width = viewport.width;
+
+              var renderContext = {
+                canvasContext: ctx,
+                viewport: viewport
+              };
+              page.render(renderContext);
+            });
+
+            document.getElementById('page_num').textContent = pageNum;
+            document.getElementById('page_count').textContent = pdfDoc.numPages;
+          }
+
+          function goPrevious() {
+            if (pageNum &lt; 2)
+              return;
+            pageNum--;
+            renderPage(pageNum);
+          }
+
+          function goNext() {
+            if (pageNum >= pdfDoc.numPages)
+              return;
+            pageNum++;
+            renderPage(pageNum);
+          }
+
+          //
+          // Asynchronously download PDF as an ArrayBuffer
+          //
+          PDFJS.getDocument(url).then(function getPdfHelloWorld(_pdfDoc) {
+            pdfDoc = _pdfDoc;
+            renderPage(pageNum);
+          });
+
+          function expandscreen() {
+            scale = 1.25,
+            renderPage(pageNum);
+          }
+
+          function collapsescreen() {
+            scale = 0.25,
+            renderPage(pageNum);
+          }
+        </xsl:text></script>
     </xsl:template>
 
     <xsl:template match="dim:dim" mode="itemDetailView-DIM">
