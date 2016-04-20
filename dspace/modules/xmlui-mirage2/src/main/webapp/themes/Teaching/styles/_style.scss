@@ -21,3 +21,17 @@
     color: white;
     background: hotpink;
 }
+
+.img-responsive {
+  display: block;
+  max-width: 175px;
+  height: auto;
+}
+.list-exercise-item{
+  display: list-item;
+  border:0px;
+  margin-left:10px;
+}
+.list-multichoice-item{
+  border:0px;
+}

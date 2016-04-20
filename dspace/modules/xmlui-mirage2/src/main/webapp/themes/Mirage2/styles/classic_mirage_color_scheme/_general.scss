@@ -238,6 +238,7 @@ header {
 
     .navbar-default{
 
+        height: inherit;
         background-color: $navbar-inverse-bg;
 
         .navbar-brand {
@@ -247,6 +248,7 @@ header {
             color: $navbar-inverse-brand-hover-color;
             background-color: $navbar-inverse-brand-hover-bg;
         }
+        height: inherit;
     }
 
     .navbar-text {

@@ -193,6 +193,13 @@
             </xsl:for-each>
 
             <link rel="stylesheet" href="{concat($theme-path, 'styles/main.css')}"/>
+            <link rel="stylesheet" href="{concat($theme-path, 'styles/component.css')}"/>
+            <link rel="stylesheet" href="{concat($theme-path, 'styles/main-video.css')}"/>
+            <link rel="stylesheet" href="{concat($theme-path, 'styles/justifiedGallery.css')}"/>
+            <link rel="stylesheet" href="{concat($theme-path, 'styles/cssFamily.css')}"/>
+            <link rel="stylesheet" href="{concat($theme-path, 'styles/lightgallery.css')}"/>
+            <link href="http://vjs.zencdn.net/5.4.6/video-js.css" rel="stylesheet"/>
+            <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
 
             <!-- Add syndication feeds -->
             <xsl:for-each select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='feed']">
@@ -219,6 +226,7 @@
                         <xsl:value-of select="$context-path"/>
                         <xsl:text>/</xsl:text>
                         <xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='opensearch'][@qualifier='autolink']"/>
+                        <xsl:text>description.xml</xsl:text>
                     </xsl:attribute>
                     <xsl:attribute name="title" >
                         <xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='opensearch'][@qualifier='shortName']"/>
@@ -325,6 +333,11 @@
             <div class="navbar navbar-default navbar-static-top" role="navigation">
                 <div class="container">
                     <div class="navbar-header">
+                        <a href="{$context-path}/" class="navbar-brand">
+                            <h1>
+                                 <i18n:text>xmlui.dri2xhtml.structural.head-subtitle</i18n:text>
+                            </h1>
+                        </a>
 
                         <button type="button" class="navbar-toggle" data-toggle="offcanvas">
                             <span class="sr-only">
@@ -334,11 +347,6 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-
-                        <a href="{$context-path}/" class="navbar-brand">
-                            <img src="{$theme-path}/images/DSpace-logo-line.svg" />
-                        </a>
-
 
                         <div class="navbar-header pull-right visible-xs hidden-sm hidden-md hidden-lg">
                         <ul class="nav nav-pills pull-left ">
@@ -855,18 +863,45 @@
             <xsl:call-template name="choiceLookupPopUpSetup"/>
         </xsl:if>
 
+        <xsl:call-template name="addJavascript-google-analytics" />
+        <xsl:call-template name="add-expander-js" />
+    </xsl:template>
+
+    <xsl:template name="addJavascript-google-analytics">
         <!-- Add a google analytics script if the key is present -->
         <xsl:if test="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='google'][@qualifier='analytics']">
             <script><xsl:text>
-                  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-                  ga('create', '</xsl:text><xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='google'][@qualifier='analytics']"/><xsl:text>', '</xsl:text><xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='serverName']"/><xsl:text>');
-                  ga('send', 'pageview');
-           </xsl:text></script>
+                ga('create', '</xsl:text><xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='google'][@qualifier='analytics']"/><xsl:text>', '</xsl:text><xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='serverName']"/><xsl:text>');
+                ga('send', 'pageview');
+            </xsl:text></script>
         </xsl:if>
+    </xsl:template>
+
+    <xsl:template name="add-expander-js">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+      <script src="{concat($theme-path, 'scripts/grid.js')}">&#160;</script>
+
+            <script><xsl:text>
+
+                $(function() {
+                  Grid.init();
+                });
+
+            </xsl:text></script>
+
+      <script src="http://vjs.zencdn.net/5.4.6/video.js"></script>
+      <script src="{concat($theme-path, 'scripts/lightgallery.js')}">&#160;</script>
+      <script src="{concat($theme-path, 'scripts/lg-fullscreen.js')}">&#160;</script>
+      <script src="{concat($theme-path, 'scripts/lg-thumbnail.js')}">&#160;</script>
+      <script src="{concat($theme-path, 'scripts/lg-video.js')}">&#160;</script>
+      <script src="{concat($theme-path, 'scripts/lg-autoplay.js')}">&#160;</script>
+      <script src="{concat($theme-path, 'scripts/playvideos.js')}">&#160;</script>
+      <script src="http://code.responsivevoice.org/responsivevoice.js"></script>
     </xsl:template>
 
     <!--The Language Selection-->
