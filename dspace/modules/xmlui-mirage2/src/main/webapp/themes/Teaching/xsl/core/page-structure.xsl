@@ -883,25 +883,25 @@
     </xsl:template>
 
     <xsl:template name="add-expander-js">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-      <script src="{concat($theme-path, 'scripts/grid.js')}">&#160;</script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="{concat($theme-path, 'scripts/grid.js')}">&#160;</script>
 
-            <script><xsl:text>
+        <script><xsl:text>
 
-                $(function() {
-                  Grid.init();
-                });
+            $(function() {
+              Grid.init();
+            });
 
-            </xsl:text></script>
+        </xsl:text></script>
 
-      <script src="http://vjs.zencdn.net/5.4.6/video.js"></script>
-      <script src="{concat($theme-path, 'scripts/lightgallery.js')}">&#160;</script>
-      <script src="{concat($theme-path, 'scripts/lg-fullscreen.js')}">&#160;</script>
-      <script src="{concat($theme-path, 'scripts/lg-thumbnail.js')}">&#160;</script>
-      <script src="{concat($theme-path, 'scripts/lg-video.js')}">&#160;</script>
-      <script src="{concat($theme-path, 'scripts/lg-autoplay.js')}">&#160;</script>
-      <script src="{concat($theme-path, 'scripts/playvideos.js')}">&#160;</script>
-      <script src="http://code.responsivevoice.org/responsivevoice.js"></script>
+        <script src="http://vjs.zencdn.net/5.4.6/video.js"></script>
+        <script src="{concat($theme-path, 'scripts/lightgallery.js')}">&#160;</script>
+        <script src="{concat($theme-path, 'scripts/lg-fullscreen.js')}">&#160;</script>
+        <script src="{concat($theme-path, 'scripts/lg-thumbnail.js')}">&#160;</script>
+        <script src="{concat($theme-path, 'scripts/lg-video.js')}">&#160;</script>
+        <script src="{concat($theme-path, 'scripts/lg-autoplay.js')}">&#160;</script>
+        <script src="{concat($theme-path, 'scripts/playvideos.js')}">&#160;</script>
+        <script src="http://code.responsivevoice.org/responsivevoice.js"></script>
     </xsl:template>
 
     <!--The Language Selection-->

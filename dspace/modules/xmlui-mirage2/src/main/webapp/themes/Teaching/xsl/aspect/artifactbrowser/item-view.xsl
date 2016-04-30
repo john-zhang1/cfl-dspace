@@ -1037,7 +1037,7 @@
     </xsl:template>
 
     <xsl:template name="add-pdfreader-js">
-      <script type="text/javascript" src="https://raw.github.com/mozilla/pdf.js/gh-pages/build/pdf.js">&#160;</script>
+        <script type="text/javascript" src="https://raw.github.com/mozilla/pdf.js/gh-pages/build/pdf.js">&#160;</script>
 
         <script><xsl:text>
           // var url = 'http://cdn.mozilla.net/pdfjs/tracemonkey.pdf';
