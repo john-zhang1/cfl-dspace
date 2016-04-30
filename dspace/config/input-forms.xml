@@ -15,8 +15,11 @@
 
  <form-map>
    <name-map collection-handle="default" form-name="traditional" />
-   <name-map collection-handle="123456789/1" form-name="chineseresearch" />
-   <name-map collection-handle="123456789/2" form-name="chineseteaching" />
+   <name-map collection-handle="123456789/3" form-name="chineseresearch" />
+   <name-map collection-handle="123456789/4" form-name="chineseresearch" />
+   <name-map collection-handle="123456789/7" form-name="chineseteaching" />
+   <name-map collection-handle="123456789/8" form-name="chineseteaching" />
+   <name-map collection-handle="123456789/9" form-name="chineseteaching" />
  </form-map>
 
 
