@@ -76,7 +76,7 @@ public class DescribeStep extends AbstractProcessingStep
 
     // there were required fields that were not filled out
     public static final int STATUS_MISSING_REQUIRED_FIELDS = 2;
-    
+
     // the metadata language qualifier
     public static final String LANGUAGE_QUALIFIER = getDefaultLanguageQualifier();
 
@@ -87,7 +87,7 @@ public class DescribeStep extends AbstractProcessingStep
         getInputsReader();
     }
 
-   
+
 
     /**
      * Do any processing of the information input by the user, and/or perform
@@ -149,14 +149,14 @@ public class DescribeStep extends AbstractProcessingStep
         {
             documentType = item.getMetadataByMetadataString("dc.type")[0].value;
         }
-        
+
         // Step 1:
         // clear out all item metadata defined on this page
         for (int i = 0; i < inputs.length; i++)
         {
 
         	// Allow the clearing out of the metadata defined for other document types, provided it can change anytime
-        	
+
             if (!inputs[i]
                     .isVisible(subInfo.isInWorkflow() ? DCInput.WORKFLOW_SCOPE
                             : DCInput.SUBMISSION_SCOPE))
@@ -358,7 +358,7 @@ public class DescribeStep extends AbstractProcessingStep
         return STATUS_COMPLETE;
     }
 
-    
+
 
     /**
      * Retrieves the number of pages that this "step" extends over. This method
@@ -424,10 +424,10 @@ public class DescribeStep extends AbstractProcessingStep
                 throw new ServletException(e);
             }
         }
-        
+
         return inputsReader;
     }
-    
+
     /**
      * @param filename
      *        file to get the input reader for
@@ -445,11 +445,11 @@ public class DescribeStep extends AbstractProcessingStep
         }
         return inputsReader;
     }
-    
+
     /**
      * @return the default language qualifier for metadata
      */
-    
+
     public static String getDefaultLanguageQualifier()
     {
        String language = "";
@@ -460,7 +460,7 @@ public class DescribeStep extends AbstractProcessingStep
        }
        return language;
     }
-    
+
     // ****************************************************************
     // ****************************************************************
     // METHODS FOR FILLING DC FIELDS FROM METADATA FORMS
@@ -637,11 +637,45 @@ public class DescribeStep extends AbstractProcessingStep
                 }
                 else
                 {
-                    item.addMetadata(schema, element, qualifier, null,
+                    // Set special symbols to seperate question and multi choices
+                    if(qualifier.equals("multichoice") || qualifier.equals("vocabulary")){
+                        String fullQuestion = "";
+                        if(l != null && !l.equals("")){
+                            if(f!= null && !f.equals("")){
+                                if(qualifier.equals("multichoice")){
+                                    fullQuestion = l + separateMultiChoices(f);
+                                }else{
+                                    fullQuestion = l + " (A)." + f;
+                                }
+                            }else{
+                                fullQuestion =l;
+                            }
+                            item.addMetadata(schema, element, qualifier, null, fullQuestion);
+                        }
+                    }
+                    else{
+                        item.addMetadata(schema, element, qualifier, null,
                             new DCPersonName(l, f).toString());
+                    }
                 }
             }
         }
+    }
+
+    /**
+     *
+     * @param choices
+     * @return
+     */
+    private String separateMultiChoices(String choices){
+        String[] multichoices = choices.split(";");
+        String returnString = "";
+        int j = 65;
+        for(int i=0; i<multichoices.length;i++){
+            char c = (char)(j + i);
+            returnString += " (" + c + "). " + multichoices[i] + ";";
+        }
+        return returnString;
     }
 
     /**

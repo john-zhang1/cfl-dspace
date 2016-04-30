@@ -85,7 +85,15 @@ public class DescribeStep extends AbstractSubmissionStep
         message("xmlui.Submission.submit.DescribeStep.series_name");
     protected static final Message T_report_no=
         message("xmlui.Submission.submit.DescribeStep.report_no");
-        
+    protected static final Message T_multichoice_question_help
+            = message("xmlui.Submission.submit.DescribeStep.question_help");
+    protected static final Message T_multichoice_choice_help
+            = message("xmlui.Submission.submit.DescribeStep.choice_help");
+    protected static final Message T_newword_chinese_help
+            = message("xmlui.Submission.submit.DescribeStep.chinese_help");
+    protected static final Message T_newword_english_help
+            = message("xmlui.Submission.submit.DescribeStep.english_help");
+
         /**
      * A shared resource of the inputs reader. The 'inputs' are the
      * questions we ask the user to describe an item during the
@@ -106,7 +114,7 @@ public class DescribeStep extends AbstractSubmissionStep
             INPUTS_READER = new DCInputsReader();
         }
     }
-    
+
     /**
      * Return the inputs reader. Note, the reader must have been
      * initialized before the reader can be accessed.
@@ -117,7 +125,7 @@ public class DescribeStep extends AbstractSubmissionStep
     {
         return INPUTS_READER;
     }
-    
+
 
         /**
          * Establish our required parameters, abstractStep will enforce these.
@@ -126,7 +134,7 @@ public class DescribeStep extends AbstractSubmissionStep
         {
                 this.requireSubmission = true;
                 this.requireStep = true;
-                
+
                 // Ensure that the InputsReader is initialized.
                 try
                 {
@@ -137,7 +145,7 @@ public class DescribeStep extends AbstractSubmissionStep
                     throw new ServletException(e);
                 }
         }
-        
+
         public void addPageMeta(PageMeta pageMeta) throws SAXException, WingException,
         UIException, SQLException, IOException, AuthorizeException
         {
@@ -190,25 +198,25 @@ public class DescribeStep extends AbstractSubmissionStep
                 {
                     documentType = item.getMetadataByMetadataString("dc.type")[0].value;
                 }
-                
+
                 // Iterate over all inputs and add it to the form.
                 for(DCInput dcInput : inputs)
                 {
                     String scope = submissionInfo.isInWorkflow() ? DCInput.WORKFLOW_SCOPE : DCInput.SUBMISSION_SCOPE;
                     boolean readonly = dcInput.isReadOnly(scope);
-                    
+
                 	// Omit fields not allowed for this document type
                     if(!dcInput.isAllowedFor(documentType))
                     {
                     	continue;
                     }
-                    
+
                     // If the input is invisible in this scope, then skip it.
                         if (!dcInput.isVisible(scope) && !readonly)
                         {
                             continue;
                         }
-                        
+
                         String schema = dcInput.getSchema();
                         String element = dcInput.getElement();
                         String qualifier = dcInput.getQualifier();
@@ -261,7 +269,7 @@ public class DescribeStep extends AbstractSubmissionStep
                                                 filtered.add( dcValue );
                                         }
                                 }
-                                
+
                                 renderQualdropField(form, fieldName, dcInput, filtered.toArray(new Metadatum[filtered.size()]), readonly);
                         }
                         else if (inputType.equals("textarea"))
@@ -316,7 +324,7 @@ public class DescribeStep extends AbstractSubmissionStep
         //Create a new list section for this step (and set its heading)
         List describeSection = reviewList.addList("submit-review-" + this.stepAndPage, List.TYPE_FORM);
         describeSection.setHead(T_head);
-        
+
         //Review the values assigned to all inputs
         //on this page of the Describe step.
         DCInputSet inputSet = null;
@@ -328,7 +336,7 @@ public class DescribeStep extends AbstractSubmissionStep
         {
             throw new UIException(se);
         }
-        
+
         MetadataAuthorityManager mam = MetadataAuthorityManager.getManager();
         DCInput[] inputs = inputSet.getPageRows(getPage()-1, submission.hasMultipleTitles(), submission.isPublishedBefore());
 
@@ -404,12 +412,12 @@ public class DescribeStep extends AbstractSubmissionStep
                 } // For each Metadatum
             } // If values exist
         } // For each input
-        
+
         // return this new "describe" section
         return describeSection;
     }
-    
-        
+
+
         /**
          * Render a Name field to the DRI document. The name field consists of two
          * text fields, one for the last name and the other for a first name (plus
@@ -473,23 +481,32 @@ public class DescribeStep extends AbstractSubmissionStep
                 }
 
                 // Setup the first and last name
-                lastName.setLabel(T_last_name_help);
-                firstName.setLabel(T_first_name_help);
-                
+                if (fieldName.equals("dc_tcfl_multichoice")) {
+                    lastName.setLabel(T_multichoice_question_help);
+                    firstName.setLabel(T_multichoice_choice_help);
+                }else if(fieldName.equals("dc_tcfl_vocabulary")) {
+                    lastName.setLabel(T_newword_chinese_help);
+                    firstName.setLabel(T_newword_english_help);
+                }
+                else {
+                    lastName.setLabel(T_last_name_help);
+                    firstName.setLabel(T_first_name_help);
+                }
+
                 if (readonly)
                 {
                     lastName.setDisabled();
                     firstName.setDisabled();
                     fullName.setDisabled();
                 }
-                
+
                 // Setup the field's values
                 if (dcInput.isRepeatable() || dcValues.length > 1)
                 {
                         for (Metadatum dcValue : dcValues)
                         {
                                 DCPersonName dpn = new DCPersonName(dcValue.value);
-                
+
                                 lastName.addInstance().setValue(dpn.getLastName());
                                 firstName.addInstance().setValue(dpn.getFirstNames());
                                 Instance fi = fullName.addInstance();
@@ -510,7 +527,7 @@ public class DescribeStep extends AbstractSubmissionStep
                 else if (dcValues.length == 1)
                 {
                         DCPersonName dpn = new DCPersonName(dcValues[0].value);
-                
+
                         lastName.setValue(dpn.getLastName());
                         firstName.setValue(dpn.getFirstNames());
                         if (isAuthorityControlled)
@@ -526,7 +543,7 @@ public class DescribeStep extends AbstractSubmissionStep
                 }
         }
         }
-        
+
         /**
          * Render a date field to the DRI document. The date field consists of
          * three component fields, a 4 character text field for the year, a select
@@ -584,7 +601,7 @@ public class DescribeStep extends AbstractSubmissionStep
                     month.setDisabled();
                     day.setDisabled();
                 }
-                
+
                 // Setup the year field
                 year.setLabel(T_year);
                 year.setSize(4,4);
@@ -600,7 +617,7 @@ public class DescribeStep extends AbstractSubmissionStep
                 // Setup the day field
                 day.setLabel(T_day);
                 day.setSize(2,2);
-                
+
                 // Setup the field's values
                 if (dcInput.isRepeatable() || dcValues.length > 1)
                 {
@@ -620,7 +637,7 @@ public class DescribeStep extends AbstractSubmissionStep
 
                         year.setValue(String.valueOf(dcDate.getYear()));
                         month.setOptionSelected(dcDate.getMonth());
-                        
+
                         // Check if the day field is not specified, if so then just
                         // put a blank value in instead of the weird looking -1.
                         if (dcDate.getDay() == -1)
@@ -633,7 +650,7 @@ public class DescribeStep extends AbstractSubmissionStep
                         }
                 }
         }
-        
+
         /**
          * Render a series field to the DRI document. The series field conists of
          * two component text fields. When interpreted each of these fields are
@@ -695,7 +712,7 @@ public class DescribeStep extends AbstractSubmissionStep
                     series.setDisabled();
                     number.setDisabled();
                 }
-                
+
                 // Setup the field's values
                 if (dcInput.isRepeatable() || dcValues.length > 1)
                 {
@@ -707,7 +724,7 @@ public class DescribeStep extends AbstractSubmissionStep
                                 number.addInstance().setValue(dcSeriesNumber.getNumber());
                                 fullSeries.addInstance().setValue(dcSeriesNumber.toString());
                         }
-                        
+
                 }
                 else if (dcValues.length == 1)
                 {
@@ -717,7 +734,7 @@ public class DescribeStep extends AbstractSubmissionStep
                         number.setValue(dcSeriesNumber.getNumber());
                 }
         }
-        
+
         /**
          * Render a qualdrop field to the DRI document. Qualdrop fields are complicated,
          * widget wise they are composed of two fields, a select and text box field.
@@ -767,14 +784,14 @@ public class DescribeStep extends AbstractSubmissionStep
                 {
                     qualdrop.enableDeleteOperation();
                 }
-                
+
                 if (readonly)
                 {
                     qualdrop.setDisabled();
                     qual.setDisabled();
                     value.setDisabled();
                 }
-                
+
                 // Setup the possible options
                 @SuppressWarnings("unchecked") // This cast is correct
                 java.util.List<String> pairs = dcInput.getPairs();
@@ -801,7 +818,7 @@ public class DescribeStep extends AbstractSubmissionStep
                         value.setValue(dcValues[0].value);
                 }
         }
-        
+
         /**
          * Render a Text Area field to the DRI document. The text area is a simple
          * multi row and column text field.
@@ -864,7 +881,7 @@ public class DescribeStep extends AbstractSubmissionStep
                 {
                     textArea.setDisabled();
                 }
-                
+
                 // Setup the field's values
                 if (dcInput.isRepeatable() || dcValues.length > 1)
                 {
@@ -901,7 +918,7 @@ public class DescribeStep extends AbstractSubmissionStep
                 }
         }
         }
-        
+
         /**
          * Render a dropdown field for a choice-controlled input of the
          * 'select' presentation to the DRI document. The dropdown field
@@ -1022,12 +1039,12 @@ public class DescribeStep extends AbstractSubmissionStep
                         select.setMultiple();
                         select.setSize(6);
                 }
-                
+
                 if (readonly)
                 {
                     select.setDisabled();
                 }
-                
+
                 // Setup the possible options
                 @SuppressWarnings("unchecked") // This cast is correct
                 java.util.List<String> pairs = dcInput.getPairs();
@@ -1037,14 +1054,14 @@ public class DescribeStep extends AbstractSubmissionStep
                         String value   = pairs.get(i+1);
                         select.addOption(value,display);
                 }
-                
+
                 // Setup the field's pre-selected values
                 for (Metadatum dcValue : dcValues)
                 {
                         select.setOptionSelected(dcValue.value);
                 }
         }
-        
+
         /**
          * Render a select-from-list field to the DRI document.
          * This field consists of either a series of checkboxes
@@ -1066,7 +1083,7 @@ public class DescribeStep extends AbstractSubmissionStep
         private void renderSelectFromListField(List form, String fieldName, DCInput dcInput, Metadatum[] dcValues, boolean readonly) throws WingException
         {
                 Field listField = null;
-                
+
                 //if repeatable, this list of fields should be checkboxes
                 if (dcInput.isRepeatable())
                 {
@@ -1076,12 +1093,12 @@ public class DescribeStep extends AbstractSubmissionStep
                 {
                         listField = form.addItem().addRadio(fieldName);
                 }
-                
+
                 if (readonly)
                 {
                     listField.setDisabled();
                 }
-                
+
                 //      Setup the field
                 listField.setLabel(dcInput.getLabel());
                 listField.setHelp(cleanHints(dcInput.getHints()));
@@ -1101,14 +1118,14 @@ public class DescribeStep extends AbstractSubmissionStep
                     }
                 }
 
-        
+
                 //Setup each of the possible options
                 java.util.List<String> pairs = dcInput.getPairs();
                 for (int i = 0; i < pairs.size(); i += 2)
                 {
                         String display = pairs.get(i);
                         String value   = pairs.get(i+1);
-                        
+
                         if(listField instanceof CheckBox)
                         {
                                 ((CheckBox)listField).addOption(value, display);
@@ -1118,7 +1135,7 @@ public class DescribeStep extends AbstractSubmissionStep
                                 ((Radio)listField).addOption(value, display);
                         }
                 }
-                
+
                 // Setup the field's pre-selected values
                 for (Metadatum dcValue : dcValues)
                 {
@@ -1132,7 +1149,7 @@ public class DescribeStep extends AbstractSubmissionStep
                         }
                 }
         }
-        
+
         /**
          * Render a simple text field to the DRI document
          *
@@ -1163,7 +1180,7 @@ public class DescribeStep extends AbstractSubmissionStep
                 vocabularyUrl += "&metadataFieldName=" + fieldName;
                 item.addXref("vocabulary:" + vocabularyUrl).addContent(T_vocabulary_link);
             }
-            
+
                 // Setup the select field
                 text.setLabel(dcInput.getLabel());
                 text.setHelp(cleanHints(dcInput.getHints()));
@@ -1209,7 +1226,7 @@ public class DescribeStep extends AbstractSubmissionStep
                 {
                     text.setDisabled();
                 }
-                
+
                 // Setup the field's values
                 if (dcInput.isRepeatable() || dcValues.length > 1)
                 {
@@ -1259,7 +1276,7 @@ public class DescribeStep extends AbstractSubmissionStep
         {
             return (this.errorFields.contains(fieldName));
         }
-        
+
         /**
          * There is a problem with the way hints are handled. The class that we use to
          * read the input-forms.xml configuration will append and prepend HTML to hints.
