@@ -296,21 +296,20 @@
       </step>
 
       <!--Step will be to Upload the item-->
-      <!-- <step>
+      <step>
         <heading>submit.progressbar.upload</heading>
         <processing-class>org.dspace.submit.step.UploadStep</processing-class>
-        <jspui-binding>org.dspace.app.webui.submit.step.JSPUploadStep</jspui-binding>
 	      <xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.UploadStep</xmlui-binding>
         <workflow-editable>true</workflow-editable>
-      </step> -->
+      </step>
 
       <!--  Upload Item with Embargo Features -->
-      <step>
+      <!-- <step>
         <heading>submit.progressbar.upload</heading>
         <processing-class>org.dspace.submit.step.UploadWithEmbargoStep</processing-class>
         <xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.UploadWithEmbargoStep</xmlui-binding>
         <workflow-editable>true</workflow-editable>
-      </step>
+      </step> -->
 
       <!-- Check for Duplicates -->
       <!--<step>
@@ -360,21 +359,20 @@
       </step>
 
       <!--Step will be to Upload the item-->
-      <!-- <step>
+      <step>
         <heading>submit.progressbar.upload</heading>
         <processing-class>org.dspace.submit.step.UploadStep</processing-class>
-        <jspui-binding>org.dspace.app.webui.submit.step.JSPUploadStep</jspui-binding>
 	      <xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.UploadStep</xmlui-binding>
         <workflow-editable>true</workflow-editable>
-      </step> -->
+      </step>
 
       <!--  Upload Item with Embargo Features -->
-      <step>
+      <!-- <step>
         <heading>submit.progressbar.upload</heading>
         <processing-class>org.dspace.submit.step.UploadWithEmbargoStep</processing-class>
         <xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.UploadWithEmbargoStep</xmlui-binding>
         <workflow-editable>true</workflow-editable>
-      </step>
+      </step> -->
 
       <!-- Check for Duplicates -->
       <!--<step>
