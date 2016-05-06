@@ -373,8 +373,18 @@
                                                         <xsl:text>?locale-attribute=</xsl:text>
                                                         <xsl:value-of select="$locale"/>
                                                     </xsl:attribute>
-                                                    <xsl:value-of
-                                                            select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='supportedLocale'][@qualifier=$locale]"/>
+                                                    <xsl:variable name="localemodification" select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='supportedLocale'][@qualifier=$locale]"/>
+                                                    <xsl:choose>
+                                                        <xsl:when test="$locale='zh_CN'">
+                                                            <xsl:value-of select="'中文（简体）'"/>
+                                                        </xsl:when>
+                                                        <xsl:when test="$locale='zh_TW'">
+                                                            <xsl:value-of select="'中文（繁体）'"/>
+                                                        </xsl:when>
+                                                        <xsl:otherwise>
+                                                            <xsl:value-of select="$localemodification"/>
+                                                        </xsl:otherwise>
+                                                    </xsl:choose>
                                                 </a>
                                             </li>
                                         </xsl:for-each>
@@ -911,8 +921,18 @@
                 <xsl:variable name="active-locale" select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='page'][@qualifier='currentLocale']"/>
                 <a id="language-dropdown-toggle" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
                     <span class="hidden-xs">
-                        <xsl:value-of
-                                select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='supportedLocale'][@qualifier=$active-locale]"/>
+                        <xsl:choose>
+                            <xsl:when test="$active-locale='zh_CN'">
+                                <xsl:value-of select="'中文(简体)'"/>
+                            </xsl:when>
+                            <xsl:when test="$active-locale='zh_TW'">
+                                <xsl:value-of select="'中文(繁体)'"/>
+                            </xsl:when>
+                            <xsl:otherwise>
+                              <xsl:value-of
+                                      select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='supportedLocale'][@qualifier=$active-locale]"/>
+                            </xsl:otherwise>
+                        </xsl:choose>
                         <xsl:text>&#160;</xsl:text>
                         <b class="caret"/>
                     </span>
@@ -933,8 +953,18 @@
                                     <xsl:text>?locale-attribute=</xsl:text>
                                     <xsl:value-of select="$locale"/>
                                 </xsl:attribute>
-                                <xsl:value-of
-                                        select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='supportedLocale'][@qualifier=$locale]"/>
+                                <xsl:variable name="localemodification" select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='supportedLocale'][@qualifier=$locale]"/>
+                                <xsl:choose>
+                                    <xsl:when test="$locale='zh_CN'">
+                                        <xsl:value-of select="'中文(简体)'"/>
+                                    </xsl:when>
+                                    <xsl:when test="$locale='zh_TW'">
+                                        <xsl:value-of select="'中文(繁体)'"/>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <xsl:value-of select="$localemodification"/>
+                                    </xsl:otherwise>
+                                </xsl:choose>
                             </a>
                         </li>
                     </xsl:for-each>
