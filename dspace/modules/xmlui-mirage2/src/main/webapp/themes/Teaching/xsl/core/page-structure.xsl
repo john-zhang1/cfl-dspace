@@ -713,10 +713,10 @@
                     <hr/>
                     <div class="col-xs-7 col-sm-8">
                         <div>
-                            <a href="http://www.dspace.org/" target="_blank">DSpace software</a> copyright&#160;&#169;&#160;2002-2015&#160; <a href="http://www.duraspace.org/" target="_blank">DuraSpace</a>
+                            <a class="footercolor" href="http://www.dspace.org/" target="_blank">DSpace software</a> copyright&#160;&#169;&#160;2002-2015&#160; <a class="footercolor" href="http://www.duraspace.org/" target="_blank">DuraSpace</a>
                         </div>
                         <div class="hidden-print">
-                            <a>
+                            <a class="footercolor">
                                 <xsl:attribute name="href">
                                     <xsl:value-of
                                             select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='contextPath'][not(@qualifier)]"/>
@@ -725,7 +725,7 @@
                                 <i18n:text>xmlui.dri2xhtml.structural.contact-link</i18n:text>
                             </a>
                             <xsl:text> | </xsl:text>
-                            <a>
+                            <a class="footercolor">
                                 <xsl:attribute name="href">
                                     <xsl:value-of
                                             select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='contextPath'][not(@qualifier)]"/>
