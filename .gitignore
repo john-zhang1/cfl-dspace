@@ -1,2 +1,4 @@
 target
 amzmigrate.properties
+dspace/modules/xmlui/src/main/webapp/i18n/messages_zh_CN.xml
+dspace/modules/xmlui/src/main/webapp/i18n/messages_zh_TW.xml
